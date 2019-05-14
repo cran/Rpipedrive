@@ -21,7 +21,6 @@ api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/notes?'
 bodyList <- list(content=content,deal_id=deal_id,person_id=person_id,org_id=org_id,add_time=add_time,pinned_to_deal_flag=pinned_to_deal_flag,pinned_to_organization_flag=pinned_to_organization_flag,pinned_to_person_flag=pinned_to_person_flag)
 bodyList <- clear_list_(bodyList)
-url <- paste0(url,prepare_url_parameters_(bodyList))
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')
 url <- sub('{api_token}',api_token, url, fixed = TRUE)

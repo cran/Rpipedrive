@@ -24,10 +24,9 @@
 deals.add <- function(title, value=NULL, currency=NULL, user_id=NULL, person_id=NULL, org_id=NULL, stage_id=NULL, status=NULL, probability=NULL, lost_reason=NULL, add_time=NULL, visible_to=NULL, customList=NULL, api_token=NULL, company_domain='api', return_type = c('complete','boolean')){
 api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/deals?'
-if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- list(title=title,value=value,currency=currency,user_id=user_id,person_id=person_id,org_id=org_id,stage_id=stage_id,status=status,probability=probability,lost_reason=lost_reason,add_time=add_time,visible_to=visible_to)
+if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- clear_list_(bodyList)
-url <- paste0(url,prepare_url_parameters_(bodyList))
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')
 url <- sub('{api_token}',api_token, url, fixed = TRUE)

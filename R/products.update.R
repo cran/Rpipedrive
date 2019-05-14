@@ -21,8 +21,8 @@
 products.update <- function(id, name=NULL, code=NULL, unit=NULL, tax=NULL, active_flag=NULL, visible_to=NULL, owner_id=NULL, prices=NULL, customList=NULL, api_token=NULL, company_domain='api', return_type = c('complete','boolean')){
 api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/products/{id}?'
-if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- list(id=id,name=name,code=code,unit=unit,tax=tax,active_flag=active_flag,visible_to=visible_to,owner_id=owner_id,prices=prices)
+if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- clear_list_(bodyList)
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')

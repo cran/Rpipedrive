@@ -19,10 +19,9 @@
 persons.update <- function(id, name=NULL, owner_id=NULL, org_id=NULL, email=NULL, phone=NULL, visible_to=NULL, customList=NULL, api_token=NULL, company_domain='api', return_type = c('complete','boolean')){
 api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/persons/{id}?'
-if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- list(id=id,name=name,owner_id=owner_id,org_id=org_id,email=email,phone=phone,visible_to=visible_to)
+if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- clear_list_(bodyList)
-url <- paste0(url,prepare_url_parameters_(bodyList))
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')
 url <- sub('{api_token}',api_token, url, fixed = TRUE)

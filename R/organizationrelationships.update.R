@@ -18,7 +18,6 @@ api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/organizationRelationships/{id}?'
 bodyList <- list(id=id,org_id=org_id,type=type,rel_owner_org_id=rel_owner_org_id,rel_linked_org_id=rel_linked_org_id)
 bodyList <- clear_list_(bodyList)
-url <- paste0(url,prepare_url_parameters_(bodyList))
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')
 url <- sub('{api_token}',api_token, url, fixed = TRUE)

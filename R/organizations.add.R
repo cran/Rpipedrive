@@ -16,8 +16,8 @@
 organizations.add <- function(name, owner_id=NULL, visible_to=NULL, add_time=NULL, customList=NULL, api_token=NULL, company_domain='api', return_type = c('complete','boolean')){
 api_token <- check_api_token_(api_token)
 url <- 'https://{company_domain}.pipedrive.com/v1/organizations?'
-if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- list(name=name,owner_id=owner_id,visible_to=visible_to,add_time=add_time)
+if(typeof(customList) == 'list') bodyList <- c(bodyList,customList)
 bodyList <- clear_list_(bodyList)
 url <- sub('{company_domain}',company_domain, url, fixed = TRUE)
 url <- paste0(url, 'api_token={api_token}')

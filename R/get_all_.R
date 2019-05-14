@@ -13,7 +13,8 @@ get_all_ <- function(url) {
   page <- jsonlite::fromJSON(url)
 
   if (!is.null(page$additional_data$pagination$more_items_in_collection)) {
-    if (page$additional_data$pagination$more_items_in_collection) {
+    if (page$additional_data$pagination$more_items_in_collection &
+        regexpr("limit=500", url)[[1]] > 1) {
       pages[[i]] <- page$data
 
       while (page$additional_data$pagination$more_items_in_collection) {
